@@ -57,6 +57,34 @@
 .navbar .post a:hover span {
   animation: shake 0.3s;
 }
+.footer-copyright {
+  text-align: center;
+  font-size: 1em;
+  line-height: 2;
+  margin-top: 1.5em;
+  color: #666;
+}
+.footer-copyright a {
+  color: #2196f3;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-copyright a:hover {
+  color: #ff9800;
+}
+.footer-copyright .hexo {
+  color: #ff9800;
+  font-weight: bold;
+}
+.footer-copyright .github {
+  color: #24292f;
+  font-weight: bold;
+}
+.footer-copyright .aliyun {
+  color: #00a1d6;
+  font-weight: bold;
+}
 @-moz-keyframes shake {
   0% {
     transform: translateX(0);
@@ -1946,7 +1974,7 @@ table:not([class]) {
   outline: none;
 }
 html {
-  font-family: system-ui, "Microsoft Yahei", "Segoe UI", Arial, sans-serif;
+  font-family: MyCustomFont, system-ui, "Microsoft Yahei", "Segoe UI", Arial, sans-serif;
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
@@ -2890,7 +2918,26 @@ div.toast.show {
 }
 @media screen and (max-width: 450px) {
   .navbar.top {
-    top: 36px;
+    top: 8px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .navbar.top {
+    top: 0 !important;
+  }
+  body,
+  .l_body,
+  .l_main,
+  .navbar-blur {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+  }
+  .navbar nav a {
+    padding: 0.1rem 0.3rem;
+    margin: 0.05rem;
+  }
+  .navbar nav a+a {
+    margin-left: 1px;
   }
 }
 .paginator-wrap {
@@ -7143,7 +7190,7 @@ details.toc[open] >div.body section .header+.doc_tree {
 .search-wrapper .search-input {
   width: 100%;
   box-sizing: border-box;
-  font-family: system-ui, "Microsoft Yahei", "Segoe UI", Arial, sans-serif;
+  font-family: MyCustomFont, system-ui, "Microsoft Yahei", "Segoe UI", Arial, sans-serif;
   font-size: 0.875rem;
   padding: 12px 0;
   color: var(--text);
@@ -8668,7 +8715,7 @@ details.toc[open] >div.body section .header+.doc_tree {
     max-width: 100%;
   }
   .l_body .l_main {
-    padding-top: 64px;
+    padding-top: 36px;
   }
 }
 .main-mask {
@@ -9009,6 +9056,8 @@ details.toc[open] >div.body section .header+.doc_tree {
 @media screen and (max-width: 667px) {
   .l_body.index .l_main {
     padding-top: 0;
+    padding-left: 0.2rem;
+    padding-right: 0.3rem;
   }
 }
 body>.sitebg {
@@ -9041,7 +9090,7 @@ body>.sitebg .siteblur:hover {
 }
 @media screen and (max-width: 667px) {
   .l_main {
-    padding-top: 30px !important;
+    padding-top: 20px !important;
     padding-left: 1rem;
     padding-right: 1rem;
   }
