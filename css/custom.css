@@ -9,3 +9,270 @@
 body {
   font-family: 'MyCustomFont', system-ui, "Microsoft Yahei", "Segoe UI", Arial, sans-serif;
 }
+
+/* 自定义二维码翻转卡片样式 */
+.custom-flip-card-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0 0;
+}
+.custom-flip-card {
+  background: transparent;
+  width: 320px;
+  height: 420px;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
+  transform-style: preserve-3d;
+}
+.custom-flip-card:hover .custom-flip-card-inner {
+  transform: rotateY(180deg);
+}
+.custom-flip-card-front, .custom-flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 18px;
+  box-shadow: 0 6px 32px 0 rgba(0,0,0,0.12), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.custom-flip-card-front {
+  z-index: 2;
+}
+.custom-flip-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #222;
+  margin-bottom: 18px;
+  letter-spacing: 2px;
+  text-align: center;
+}
+.custom-flip-card-img {
+  width: 220px;
+  height: 220px;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px 0 rgba(0,0,0,0.10);
+  object-fit: cover;
+  margin-bottom: 18px;
+  border: 1.5px solid #eaeaea;
+}
+.custom-flip-card-back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+  z-index: 3;
+}
+.custom-flip-card-back-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 18px;
+}
+.custom-flip-card-back-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  letter-spacing: 1.5px;
+  text-align: center;
+}
+.custom-flip-card-back-desc {
+  font-size: 1.05rem;
+  color: #444;
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* 微信公众号二维码翻转卡片样式 */
+.custom-flip-card-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0 0;
+}
+.custom-flip-card {
+  background: transparent;
+  width: 320px;
+  height: 120px;
+  perspective: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.custom-flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.7s cubic-bezier(0.4,0.2,0.2,1);
+  transform-style: preserve-3d;
+}
+.custom-flip-card:hover .custom-flip-card-inner {
+  transform: rotateY(180deg);
+}
+.wechat-card-front, .wechat-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10), 0 1.5px 6px 0 rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 18px 28px 18px 28px;
+  box-sizing: border-box;
+}
+.wechat-card-front {
+  background: #3ec06c;
+  color: #fff;
+  z-index: 2;
+  overflow: hidden;
+}
+.wechat-card-title-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.wechat-card-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  margin-right: 10px;
+}
+.wechat-card-badge {
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: #fff;
+  color: #3ec06c;
+  border-radius: 5px;
+  padding: 2px 8px;
+  margin-left: 2px;
+  margin-top: 2px;
+  letter-spacing: 1px;
+}
+.wechat-card-subtitle {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 0;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+}
+.wechat-card-arrow {
+  font-size: 1.1em;
+  margin-left: 4px;
+  font-weight: bold;
+}
+.wechat-card-bg-logo {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 170px;
+  height: 120px;
+  opacity: 0.18;
+  filter: blur(2.5px);
+  pointer-events: none;
+  z-index: 1;
+  object-fit: contain;
+}
+
+.wechat-card-back {
+  background: #3ec06c;
+  color: #fff;
+  z-index: 3;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 18px 28px 18px 28px;
+}
+.wechat-card-back-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 6px;
+}
+.wechat-card-back .wechat-card-title-row {
+  margin-bottom: 8px;
+}
+.wechat-card-back .wechat-card-title {
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+}
+.wechat-card-back-desc {
+  font-size: 1.05rem;
+  font-weight: 500;
+  margin-left: 8px;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+}
+.wechat-card-qr {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px;
+  background: #fff;
+  margin-left: auto;
+  margin-right: 0;
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10);
+  border: 1.5px solid #eaeaea;
+}
+.wechat-card-title,
+.wechat-card-badge,
+.wechat-card-subtitle,
+.wechat-card-arrow,
+.wechat-card-back-desc {
+  font-weight: 800 !important;
+}
+@media (max-width: 480px) {
+  .custom-flip-card {
+    width: 90vw;
+    height: 60vw;
+    min-width: 220px;
+    min-height: 280px;
+    max-width: 320px;
+    max-height: 420px;
+  }
+  .custom-flip-card-img {
+    width: 60vw;
+    height: 60vw;
+    max-width: 220px;
+    max-height: 220px;
+  }
+  .custom-flip-card {
+    width: 95vw;
+    height: 32vw;
+    min-width: 180px;
+    min-height: 80px;
+    max-width: 320px;
+    max-height: 120px;
+  }
+  .wechat-card-bg-logo {
+    width: 40px;
+    height: 40px;
+    right: 8px;
+    bottom: 4px;
+  }
+  .wechat-card-qr {
+    width: 48px;
+    height: 48px;
+  }
+}
