@@ -265,3 +265,23 @@ init.sidebar()
 init.relativeDate(document.querySelectorAll('#post-meta time'))
 init.registerTabsTag()
 init.canonicalCheck()
+
+// 回到顶部按钮逻辑
+window.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  // 显示/隐藏按钮（渐隐渐显）
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > 300) {
+      btn.classList.add('show');
+    } else {
+      btn.classList.remove('show');
+    }
+  });
+  // 点击回到顶部
+  btn.addEventListener('click', function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  // 初始隐藏
+  btn.classList.remove('show');
+});
