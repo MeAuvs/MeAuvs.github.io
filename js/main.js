@@ -285,19 +285,3 @@ window.addEventListener('DOMContentLoaded', function() {
   // 初始隐藏
   btn.classList.remove('show');
 });
-
-// ===== Waline 阅读量统计自动加载 =====
-if (window.theme?.comments?.waline?.pageview) {
-  document.addEventListener('DOMContentLoaded', function() {
-    var el = document.getElementById('waline-pageview-count');
-    if (el && window.Waline) {
-      var path = el.getAttribute('data-path') || location.pathname;
-      // 兼容Hexo的permalink和path
-      Waline.pageviewCount({
-        serverURL: window.theme.comments.waline.serverURL,
-        path: path,
-        selector: '#waline-pageview-count'
-      });
-    }
-  });
-}
