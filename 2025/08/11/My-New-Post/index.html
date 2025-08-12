@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+    <!-- title -->
+<!-- keywords -->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="author" content="John Doe">
+    <meta name="renderer" content="webkit">
+    <meta name="copyright" content="John Doe">
+        <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
+    <meta name="description" content="">
+    <meta name="description" content="【第一部分：完整代码】1. 模板文件修改123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949">
+<meta property="og:type" content="article">
+<meta property="og:title" content="My personalized blog practice">
+<meta property="og:url" content="http://example.com/2025/08/11/My-New-Post/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="【第一部分：完整代码】1. 模板文件修改123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-08-11T11:34:23.000Z">
+<meta property="article:modified_time" content="2025-08-12T02:01:15.732Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="icon" href="/assets/favicon.ico">
+    <title>My personalized blog practice · NexView&#39;s Studio</title>
+    <!-- /*! loadCSS. [c]2017 Filament Group, Inc. MIT License */
+/* This file is meant as a standalone workflow for
+- testing support for link[rel=preload]
+- enabling async CSS loading in browsers that do not support rel=preload
+- applying rel preload css once loaded, whether supported or not.
+*/ -->
+<script>
+    (function (w) {
+        'use strict'
+        // rel=preload support test
+        if (!w.loadCSS) {
+            w.loadCSS = function () {}
+        }
+        // define on the loadCSS obj
+        var rp = (loadCSS.relpreload = {})
+        // rel=preload feature support test
+        // runs once and returns a function for compat purposes
+        rp.support = (function () {
+            var ret
+            try {
+                ret = w.document.createElement('link').relList.supports('preload')
+            } catch (e) {
+                ret = false
+            }
+            return function () {
+                return ret
+            }
+        })()
+
+        // if preload isn't supported, get an asynchronous load by using a non-matching media attribute
+        // then change that media back to its intended value on load
+        rp.bindMediaToggle = function (link) {
+            // remember existing media attr for ultimate state, or default to 'all'
+            var finalMedia = link.media || 'all'
+
+            function enableStylesheet() {
+                link.media = finalMedia
+            }
+
+            // bind load handlers to enable media
+            if (link.addEventListener) {
+                link.addEventListener('load', enableStylesheet)
+            } else if (link.attachEvent) {
+                link.attachEvent('onload', enableStylesheet)
+            }
+
+            // Set rel and non-applicable media type to start an async request
+            // note: timeout allows this to happen async to let rendering continue in IE
+            setTimeout(function () {
+                link.rel = 'stylesheet'
+                link.media = 'only x'
+            })
+            // also enable media after 3 seconds,
+            // which will catch very old browsers (android 2.x, old firefox) that don't support onload on link
+            setTimeout(enableStylesheet, 3000)
+        }
+
+        // loop through link elements in DOM
+        rp.poly = function () {
+            // double check this to prevent external calls from running
+            if (rp.support()) {
+                return
+            }
+            var links = w.document.getElementsByTagName('link')
+            for (var i = 0; i < links.length; i++) {
+                var link = links[i]
+                // qualify links to those with rel=preload and as=style attrs
+                if (
+                    link.rel === 'preload' &&
+                    link.getAttribute('as') === 'style' &&
+                    !link.getAttribute('data-loadcss')
+                ) {
+                    // prevent rerunning on link
+                    link.setAttribute('data-loadcss', true)
+                    // bind listeners to toggle media back
+                    rp.bindMediaToggle(link)
+                }
+            }
+        }
+
+        // if unsupported, run the polyfill
+        if (!rp.support()) {
+            // run once at least
+            rp.poly()
+
+            // rerun poly on an interval until onload
+            var run = w.setInterval(rp.poly, 500)
+            if (w.addEventListener) {
+                w.addEventListener('load', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            } else if (w.attachEvent) {
+                w.attachEvent('onload', function () {
+                    rp.poly()
+                    w.clearInterval(run)
+                })
+            }
+        }
+
+        // commonjs
+        if (typeof exports !== 'undefined') {
+            exports.loadCSS = loadCSS
+        } else {
+            w.loadCSS = loadCSS
+        }
+    })(typeof global !== 'undefined' ? global : this)
+</script>
+
+    <style type="text/css">
+    @font-face {
+        font-family: 'Oswald-Regular';
+        src: url("/font/Oswald-Regular.ttf");
+    }
+
+    body {
+        margin: 0;
+    }
+
+    header,
+    footer,
+    .footer-fixed-btn,
+    .sidebar,
+    .container,
+    .site-intro-meta,
+    .toc-wrapper {
+        display: none;
+    }
+
+    .site-intro {
+        position: relative;
+        z-index: 3;
+        width: 100%;
+        /* height: 50vh; */
+        overflow: hidden;
+    }
+
+    .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(
+            -45deg,
+            #444 0,
+            #444 80px,
+            #333 80px,
+            #333 160px
+        );
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2.5s ease-out 0s infinite;
+    }
+
+    @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(0, 0, 0);
+        }
+    }
+</style>
+
+    <link id="stylesheet-fancybox" rel="preload" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-base" rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link id="stylesheet-mobile" rel="preload" href="/css/mobile.css" as="style" onload="this.onload=null;this.rel='stylesheet';this.media='screen and (max-width: 960px)'">
+    <link id="stylesheet-theme-dark" rel="preload" href="/css/dark.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js" as="script">
+    <link rel="preload" href="/scripts/main.js" as="script">
+    <link rel="preload" href="/font/Oswald-Regular.ttf" as="font" crossorigin>
+    <link rel="preload" href="https://at.alicdn.com/t/font_327081_1dta1rlogw17zaor.woff" as="font" crossorigin>
+    <!-- algolia -->
+    <!-- 百度统计  -->
+    <!-- 谷歌统计  -->
+    <!-- Google tag (gtag.js) -->
+    <style>
+        /* About页面header黑色按钮样式 - 只在白天模式下生效 */
+        
+        /* 默认情况下（白天模式），about页面按钮为黑色 */
+        .about-page-header .header-sidebar-menu {
+            color: #000;
+            border-color: #000;
+            background-color: transparent;
+        }
+        
+        .about-page-header .header-actions .header-theme-btn,
+        .about-page-header .header-actions .home-link a {
+            color: #000;
+        }
+        
+        .about-page-header .header-actions .header-theme-btn:hover,
+        .about-page-header .header-actions .home-link a:hover {
+            color: #f75357;
+        }
+        
+        /* header banner样式 - 保持背景透明，文字变黑 */
+        .about-page-header header .banner .blog-title a,
+        .about-page-header header .banner .post-title a {
+            color: #000;
+        }
+        
+        .about-page-header header .banner .blog-title a:hover {
+            color: #f75357;
+        }
+        
+        /* 确保sidebar menu在激活状态下也是黑色 */
+        .about-page-header .header-sidebar-menu.header-sidebar-menu-active {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+    
+    <script>
+        // 检测about页面并添加CSS类，同时处理主题切换
+        document.addEventListener('DOMContentLoaded', function() {
+            if (window.location.pathname.includes('/about/')) {
+                document.body.classList.add('about-page-header');
+                
+                // 监听主题切换事件
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.type === 'childList') {
+                            // 检查是否有dark.css被添加或移除
+                            const darkStylesheet = document.getElementById('stylesheet-theme-dark');
+                            if (darkStylesheet) {
+                                // 暗色模式：移除about页面的黑色按钮样式
+                                document.body.classList.remove('about-page-header');
+                            } else {
+                                // 白天模式：添加about页面的黑色按钮样式
+                                if (window.location.pathname.includes('/about/')) {
+                                    document.body.classList.add('about-page-header');
+                                }
+                            }
+                        }
+                    });
+                });
+                
+                // 观察head元素的变化
+                observer.observe(document.head, {
+                    childList: true,
+                    subtree: true
+                });
+                
+                // 初始检查
+                const darkStylesheet = document.getElementById('stylesheet-theme-dark');
+                if (darkStylesheet) {
+                    document.body.classList.remove('about-page-header');
+                }
+            }
+        });
+    </script>
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script type="text/javascript">
+        if (typeof window.$ == undefined) {
+            console.warn('jquery load from jsdelivr failed, will load local script')
+            document.write('<script src="/lib/jquery.min.js" />')
+        }
+    </script>
+        <body class="post-body">
+        <!-- header -->
+        <header class="header header-mobile">
+    <!-- top read progress line -->
+    <div class="header-element">
+        <div class="read-progress"></div>
+    </div>
+    <!-- sidebar menu button -->
+    <div class="header-element">
+        <div class="header-sidebar-menu">
+            <div style="padding-left: 1px;">&#xe775;</div>
+        </div>
+    </div>
+    <!-- header actions -->
+    <div class="header-actions">
+        <!-- theme mode switch button -->
+        <span class="header-theme-btn header-element">
+            <i class="fas fa-adjust"></i>
+        </span>
+        <!-- back to home page text -->
+        <span class="home-link header-element">
+            <a href="/">NexView's Studio.</a>
+        </span>
+    </div>
+    <!-- toggle banner -->
+    <div class="banner">
+        <div class="blog-title header-element">
+            <a href="/">NexView&#39;s Studio.</a>
+        </div>
+        <div class="post-title header-element">
+            <a href="#" class="post-name">My personalized blog practice</a>
+        </div>
+    </div>
+</header>
+
+        <!-- fixed footer -->
+        <footer class="footer-fixed">
+    <!-- donate button -->
+
+    <!-- back to top button -->
+    <div class="footer-fixed-btn footer-fixed-btn--hidden back-top">
+        <div>&#xe639;</div>
+    </div>
+</footer>
+
+        <!-- wrapper -->
+        <div class="wrapper">
+            <div class="site-intro" style="    height:50vh;
+">
+    <!-- 主页  -->
+    <!-- 404页  -->
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+                My personalized blog practice
+            <!-- 404 -->
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            <!-- 404 -->
+        </p>
+        <!-- 文章页 meta -->
+            <div class="post-intros">
+                <!-- 文章页标签  -->
+                    <div class="post-intro-tags" >
+</div>
+
+                <!-- 文章字数统计 -->
+                <div class="post-intro-meta">
+                    <!-- 撰写日期 -->
+                    <span class="iconfont-archer post-intro-calander">&#xe676;</span>
+                    <span class="post-intro-time">2025/08/11</span>
+                    <!-- busuanzi -->
+                        <span id="busuanzi_container_page_pv" class="busuanzi-pv">
+                            <span class="iconfont-archer post-intro-busuanzi">&#xe602;</span>
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    <!-- 文章分享 -->
+                    <span class="share-wrapper">
+                        <span class="iconfont-archer share-icon">&#xe71d;</span>
+                        <span class="share-text">Share</span>
+                        <ul class="share-list">
+                            <li class="iconfont-archer share-qr" data-type="qr">&#xe75b;
+                                <div class="share-qrcode"></div>
+                            </li>
+                            <li class="iconfont-archer" data-type="weibo">&#xe619;</li>
+                            <li class="iconfont-archer" data-type="qzone">&#xe62e;</li>
+                            <li class="iconfont-archer" data-type="twitter">&#xe634;</li>
+                            <li class="iconfont-archer" data-type="facebook">&#xe67a;</li>
+                        </ul>
+                    </span>
+                </div>
+            </div>
+    </div>
+    <svg class="site-intro-wave" viewBox="0 0 1440 100" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0,40 C240,90 480,0 720,40 C960,80 1200,20 1440,60 L1440,100 L0,100 Z"></path>
+    </svg>
+</div>
+
+            <script>
+  // get user agent
+  function getBrowserVersions() {
+    var u = window.navigator.userAgent
+    return {
+      userAgent: u,
+      trident: u.indexOf('Trident') > -1, //IE内核
+      presto: u.indexOf('Presto') > -1, //opera内核
+      webKit: u.indexOf('AppleWebKit') > -1, //苹果、谷歌内核
+      gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1, //火狐内核
+      mobile: !!u.match(/AppleWebKit.*Mobile.*/), //是否为移动终端
+      ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), //ios终端
+      android: u.indexOf('Android') > -1 || u.indexOf('Linux') > -1, //android终端或者uc浏览器
+      iPhone: u.indexOf('iPhone') > -1 || u.indexOf('Mac') > -1, //是否为iPhone或者安卓QQ浏览器
+      iPad: u.indexOf('iPad') > -1, //是否为iPad
+      webApp: u.indexOf('Safari') == -1, //是否为web应用程序，没有头部与底部
+      weixin: u.indexOf('MicroMessenger') == -1, //是否为微信浏览器
+      uc: u.indexOf('UCBrowser') > -1, //是否为android下的UC浏览器
+    }
+  }
+  var browser = {
+    versions: getBrowserVersions(),
+  }
+  console.log('userAgent: ' + browser.versions.userAgent)
+
+  // callback
+  function fontLoaded() {
+    console.log('font loaded')
+    if (document.getElementsByClassName('site-intro-meta')) {
+      document
+        .getElementsByClassName('intro-title')[0]
+        .classList.add('intro-fade-in')
+      document
+        .getElementsByClassName('intro-subtitle')[0]
+        .classList.add('intro-fade-in')
+      var postIntros = document.getElementsByClassName('post-intros')[0]
+      if (postIntros) {
+        postIntros.classList.add('post-fade-in')
+      }
+    }
+  }
+
+  // UC不支持跨域，所以直接显示
+  function asyncCb() {
+    if (browser.versions.uc) {
+      console.log('UCBrowser')
+      fontLoaded()
+    } else {
+      WebFont.load({
+        custom: {
+          families: ['Oswald-Regular'],
+        },
+        loading: function () {
+          // 所有字体开始加载
+          // console.log('font loading');
+        },
+        active: function () {
+          // 所有字体已渲染
+          fontLoaded()
+        },
+        inactive: function () {
+          // 字体预加载失败，无效字体或浏览器不支持加载
+          console.log('inactive: timeout')
+          fontLoaded()
+        },
+        timeout: 5000, // Set the timeout to two seconds
+      })
+    }
+  }
+
+  function asyncErr() {
+    console.warn('script load from CDN failed, will load local script')
+  }
+
+  // load webfont-loader async, and add callback function
+  function async(u, cb, err) {
+    var d = document,
+      t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0]
+    o.src = u
+    if (cb) {
+      o.addEventListener(
+        'load',
+        function (e) {
+          cb(null, e)
+        },
+        false
+      )
+    }
+    if (err) {
+      o.addEventListener(
+        'error',
+        function (e) {
+          err(null, e)
+        },
+        false
+      )
+    }
+    s.parentNode.insertBefore(o, s)
+  }
+
+  var asyncLoadWithFallBack = function (arr, success, reject) {
+    var currReject = function () {
+      reject()
+      arr.shift()
+      if (arr.length) async(arr[0], success, currReject)
+    }
+
+    async(arr[0], success, currReject)
+  }
+
+  asyncLoadWithFallBack(
+    [
+      'https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.min.js',
+      'https://cdn.bootcss.com/webfont/1.6.28/webfontloader.js',
+      "/lib/webfontloader.min.js",
+    ],
+    asyncCb,
+    asyncErr
+  )
+</script>
+
+            <img class="loading" src="/assets/loading.svg" style="display: block; margin: 6rem auto 0 auto; width: 6rem; height: 6rem;" alt="loading">
+            <div class="container container-unloaded">
+                <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="【第一部分：完整代码】"><a href="#【第一部分：完整代码】" class="headerlink" title="【第一部分：完整代码】"></a>【第一部分：完整代码】</h1><h2 id="1-模板文件修改"><a href="#1-模板文件修改" class="headerlink" title="1. 模板文件修改"></a>1. 模板文件修改</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;site-intro&quot; style=&quot;&lt;%- partial(&#x27;intro-height&#x27;, &#123;attr: &#x27;height&#x27;&#125;) %&gt;&quot;&gt;</span><br><span class="line">    &lt;%_ var bgURL; _%&gt;</span><br><span class="line">    &lt;!-- 主页  --&gt;</span><br><span class="line">    &lt;%_ if (is_home()) &#123; _%&gt;</span><br><span class="line">        &lt;%_ bgURL = theme.site_header_image; _%&gt;</span><br><span class="line">    &lt;!-- 文章页  --&gt;</span><br><span class="line">    &lt;%_ &#125; else if (is_post()) &#123; _%&gt;</span><br><span class="line">        &lt;%_ bgURL = page.header_image || theme.post_header_image || theme.site_header_image; _%&gt;</span><br><span class="line">    &lt;!-- 404页  --&gt;</span><br><span class="line">    &lt;%_ &#125; else if (page.layout === &quot;404&quot;) &#123; _%&gt;</span><br><span class="line">        &lt;%_ bgURL = theme._404_image || theme.site_header_image; _%&gt;</span><br><span class="line">    &lt;!-- about页 --&gt;</span><br><span class="line">    &lt;%_ &#125; else if (page.layout === &quot;about&quot;) &#123; _%&gt;</span><br><span class="line">        &lt;%_ bgURL = theme.about.image || theme.site_header_image; _%&gt;</span><br><span class="line">    &lt;%_ &#125; _%&gt;</span><br><span class="line">    &lt;div class=&quot;site-intro-placeholder&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;site-intro-img&quot; style=&quot;background-image: url(&lt;%- url_for(bgURL) %&gt;)&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;site-intro-meta&quot;&gt;</span><br><span class="line">        &lt;!-- 标题  --&gt;</span><br><span class="line">        &lt;h1 class=&quot;intro-title&quot;&gt;</span><br><span class="line">            &lt;!-- 主页  --&gt;</span><br><span class="line">            &lt;%_ if (is_home()) &#123; _%&gt;</span><br><span class="line">                &lt;%- theme.main_title || config.title %&gt;</span><br><span class="line">            &lt;!-- 文章页  --&gt;</span><br><span class="line">            &lt;%_ &#125; else if(is_post()) &#123; _%&gt;</span><br><span class="line">                &lt;%- truncate(strip_html(page.title), &#123;length: 80, omission: &#x27;...&#x27;&#125;) || &#x27;[Untitled Post]&#x27; %&gt;</span><br><span class="line">            &lt;!-- 404 --&gt;</span><br><span class="line">            &lt;%_ &#125; else if(page.layout === &quot;404&quot;) &#123; _%&gt;</span><br><span class="line">                &lt;%- page.title || &#x27;[404]&#x27;%&gt;</span><br><span class="line">            &lt;!-- about --&gt;</span><br><span class="line">            &lt;%_ &#125; else if(page.layout === &quot;about&quot; ) &#123; _%&gt;</span><br><span class="line">                &lt;%- page.title || &#x27;About&#x27; %&gt;</span><br><span class="line">            &lt;%_ &#125; _%&gt;</span><br><span class="line">        &lt;/h1&gt;</span><br><span class="line">        &lt;!-- 副标题 --&gt;</span><br><span class="line">        &lt;p class=&quot;intro-subtitle&quot;&gt;</span><br><span class="line">            &lt;!-- 主页副标题  --&gt;</span><br><span class="line">            &lt;%_ if (is_home()) &#123; _%&gt;</span><br><span class="line">                &lt;%_ if(typeof theme.subtitle === &#x27;string&#x27;) &#123; _%&gt;</span><br><span class="line">                    &lt;%- theme.subtitle %&gt;</span><br><span class="line">                &lt;%_ &#125; _%&gt;</span><br><span class="line">            &lt;!-- 文章页  --&gt;</span><br><span class="line">            &lt;%_ &#125; else if (is_post()) &#123; _%&gt;</span><br><span class="line">                &lt;%_ if(typeof page.subtitle === &#x27;string&#x27;) &#123; _%&gt;</span><br><span class="line">                    &lt;%- page.subtitle %&gt;</span><br><span class="line">                &lt;%_ &#125; _%&gt;</span><br><span class="line">            &lt;!-- 404 --&gt;</span><br><span class="line">            &lt;%_ &#125; else if (page.layout === &quot;404&quot;) &#123; _%&gt;</span><br><span class="line">                &lt;%- page.description %&gt;</span><br><span class="line">            &lt;%_ &#125; _%&gt;</span><br><span class="line">        &lt;/p&gt;</span><br><span class="line">        &lt;!-- 文章页 meta --&gt;</span><br><span class="line">        &lt;%_ if(is_post()) &#123; _%&gt;</span><br><span class="line">            &lt;div class=&quot;post-intros&quot;&gt;</span><br><span class="line">                &lt;!-- 文章页标签  --&gt;</span><br><span class="line">                &lt;%_ if(page.tags.length || page.categories) &#123; _%&gt;</span><br><span class="line">                    &lt;%- partial(&#x27;base-title-tags&#x27;, &#123;</span><br><span class="line">                        currPost: page,</span><br><span class="line">                        className: &#x27;post-intro-tags&#x27;&#125;) %&gt;</span><br><span class="line">                &lt;%_ &#125; _%&gt;</span><br><span class="line">                &lt;!-- 文章字数统计 --&gt;</span><br><span class="line">                &lt;%_ if(theme.reading_info) &#123; _%&gt;</span><br><span class="line">                    &lt;div class=&quot;post-intro-read&quot;&gt;</span><br><span class="line">                        &lt;span&gt;&lt;%- __(&#x27;word_count&#x27;) %&gt;: &lt;span class=&quot;post-count word-count&quot;&gt;&lt;%= wordcount(page.content) %&gt;&lt;/span&gt;&lt;%= __(&#x27;reading_time&#x27;) %&gt;: &lt;span class=&quot;post-count reading-time&quot;&gt;&lt;%= min2read(page.content) %&gt; min&lt;/span&gt;&lt;/span&gt;</span><br><span class="line">                    &lt;/div&gt;</span><br><span class="line">                &lt;%_ &#125; _%&gt;</span><br><span class="line">                &lt;div class=&quot;post-intro-meta&quot;&gt;</span><br><span class="line">                    &lt;!-- 撰写日期 --&gt;</span><br><span class="line">                    &lt;span class=&quot;iconfont-archer post-intro-calander&quot;&gt;&amp;#xe676;&lt;/span&gt;</span><br><span class="line">                    &lt;span class=&quot;post-intro-time&quot;&gt;&lt;%- date(page.date, &quot;YYYY/MM/DD&quot;) %&gt;&lt;/span&gt;</span><br><span class="line">                    &lt;!-- busuanzi --&gt;</span><br><span class="line">                    &lt;%_ if (theme.busuanzi) &#123; _%&gt;</span><br><span class="line">                        &lt;span id=&quot;busuanzi_container_page_pv&quot; class=&quot;busuanzi-pv&quot;&gt;</span><br><span class="line">                            &lt;span class=&quot;iconfont-archer post-intro-busuanzi&quot;&gt;&amp;#xe602;&lt;/span&gt;</span><br><span class="line">                            &lt;span id=&quot;busuanzi_value_page_pv&quot;&gt;&lt;/span&gt;</span><br><span class="line">                        &lt;/span&gt;</span><br><span class="line">                    &lt;%_ &#125; _%&gt;</span><br><span class="line">                    &lt;!-- 文章分享 --&gt;</span><br><span class="line">                    &lt;span class=&quot;share-wrapper&quot;&gt;</span><br><span class="line">                        &lt;span class=&quot;iconfont-archer share-icon&quot;&gt;&amp;#xe71d;&lt;/span&gt;</span><br><span class="line">                        &lt;span class=&quot;share-text&quot;&gt;Share&lt;/span&gt;</span><br><span class="line">                        &lt;ul class=&quot;share-list&quot;&gt;</span><br><span class="line">                            &lt;li class=&quot;iconfont-archer share-qr&quot; data-type=&quot;qr&quot;&gt;&amp;#xe75b;</span><br><span class="line">                                &lt;div class=&quot;share-qrcode&quot;&gt;&lt;/div&gt;</span><br><span class="line">                            &lt;/li&gt;</span><br><span class="line">                            &lt;li class=&quot;iconfont-archer&quot; data-type=&quot;weibo&quot;&gt;&amp;#xe619;&lt;/li&gt;</span><br><span class="line">                            &lt;li class=&quot;iconfont-archer&quot; data-type=&quot;qzone&quot;&gt;&amp;#xe62e;&lt;/li&gt;</span><br><span class="line">                            &lt;li class=&quot;iconfont-archer&quot; data-type=&quot;twitter&quot;&gt;&amp;#xe634;&lt;/li&gt;</span><br><span class="line">                            &lt;li class=&quot;iconfont-archer&quot; data-type=&quot;facebook&quot;&gt;&amp;#xe67a;&lt;/li&gt;</span><br><span class="line">                        &lt;/ul&gt;</span><br><span class="line">                    &lt;/span&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/div&gt;</span><br><span class="line">        &lt;%_ &#125; _%&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    &lt;svg class=&quot;site-intro-wave&quot; viewBox=&quot;0 0 1440 100&quot; preserveAspectRatio=&quot;none&quot; aria-hidden=&quot;true&quot;&gt;</span><br><span class="line">        &lt;path d=&quot;M0,40 C240,90 480,0 720,40 C960,80 1200,20 1440,60 L1440,100 L0,100 Z&quot;&gt;&lt;/path&gt;</span><br><span class="line">    &lt;/svg&gt; &lt;!-- 新增波浪SVG元素，实现平滑过渡效果 --&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-主样式文件修改"><a href="#2-主样式文件修改" class="headerlink" title="2. 主样式文件修改"></a>2. 主样式文件修改</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ========== site intro container ========== //</span></span><br><span class="line"><span class="selector-class">.site-intro</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative; <span class="comment">// 为波浪元素提供定位上下文</span></span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">3</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden; <span class="comment">// 确保波浪不会溢出容器边界</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ========== intro image ========== //</span></span><br><span class="line"><span class="selector-class">.site-intro-img</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="built_in">calc</span>(<span class="number">100%</span> + <span class="number">1px</span>);</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">filter</span>: <span class="built_in">brightness</span>(<span class="number">0.5</span>);</span><br><span class="line">  <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">  <span class="attribute">background-position</span>: center center;</span><br><span class="line">  <span class="attribute">background-size</span>: cover;</span><br><span class="line">  <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ========== intro wave ========== //</span></span><br><span class="line"><span class="selector-class">.site-intro-wave</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: -<span class="number">1px</span>; <span class="comment">// 微调位置确保无缝衔接</span></span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">70px</span>; <span class="comment">// 波浪高度，可根据需要调整</span></span><br><span class="line">  <span class="attribute">z-index</span>: <span class="number">0</span>; <span class="comment">// 位于背景图之上，内容之下</span></span><br><span class="line">  <span class="attribute">pointer-events</span>: none; <span class="comment">// 不影响用户交互</span></span><br><span class="line"></span><br><span class="line">  <span class="selector-tag">path</span> &#123;</span><br><span class="line">    <span class="attribute">fill</span>: <span class="variable">$body-background-color</span>; <span class="comment">// 使用主题背景色，支持明暗模式切换</span></span><br><span class="line">    <span class="attribute">transition</span>: <span class="variable">$transition-animation</span>; <span class="comment">// 平滑的颜色过渡效果</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ========== intro placeholder ========== //</span></span><br><span class="line"><span class="comment">// 在layout中 //</span></span><br><span class="line"><span class="comment">// ========== main intro meta ========== //</span></span><br><span class="line"><span class="selector-class">.site-intro-meta</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.intro-title</span>,</span><br><span class="line"><span class="selector-class">.intro-subtitle</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="variable">$feature-font-family</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">transition</span>: <span class="variable">$transition-animation</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, -<span class="number">1rem</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.intro-title</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">4rem</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.intro-subtitle</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">2rem</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">0.5rem</span>;</span><br><span class="line">  <span class="attribute">transition-delay</span>: <span class="number">0.5s</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.intro-fade-in</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.home-body</span> &#123;</span><br><span class="line">  <span class="selector-class">.intro-title</span>,</span><br><span class="line">  <span class="selector-class">.intro-subtitle</span> &#123;</span><br><span class="line">    <span class="selector-tag">text</span>-align: center;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="3-暗色模式样式修改"><a href="#3-暗色模式样式修改" class="headerlink" title="3. 暗色模式样式修改"></a>3. 暗色模式样式修改</h2><figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">&#x27;_dark/_partial/_partial/_header-dark&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Wave color for dark mode</span></span><br><span class="line"><span class="selector-class">.site-intro-wave</span> <span class="selector-tag">path</span> &#123;</span><br><span class="line">  <span class="attribute">fill</span>: <span class="variable">$body-background-color-dark</span>; <span class="comment">// 暗色模式下的波浪填充色</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="【第二部分：详细改动分析文章】"><a href="#【第二部分：详细改动分析文章】" class="headerlink" title="【第二部分：详细改动分析文章】"></a>【第二部分：详细改动分析文章】</h1><h2 id="博客顶图波浪过渡效果的技术实现与设计思考"><a href="#博客顶图波浪过渡效果的技术实现与设计思考" class="headerlink" title="博客顶图波浪过渡效果的技术实现与设计思考"></a>博客顶图波浪过渡效果的技术实现与设计思考</h2><p>在现代博客设计中，视觉层次和过渡效果对用户体验的影响越来越重要。本文详细分析了一个看似简单但技术细节丰富的改动：为博客顶图添加平滑的波浪过渡效果。这个改动不仅提升了视觉美感，更体现了现代前端开发中对细节的追求。</p>
+<h3 id="整体设计思路与实现策略"><a href="#整体设计思路与实现策略" class="headerlink" title="整体设计思路与实现策略"></a>整体设计思路与实现策略</h3><p>这次改动的核心目标是在不破坏现有功能的前提下，为博客的顶图区域添加一个优雅的波浪过渡效果。选择使用SVG路径而非CSS渐变或伪元素，主要考虑到SVG在复杂形状绘制方面的优势。SVG不仅能够精确控制波浪的曲线形状，还能通过CSS变量实现主题色适配，这在支持明暗模式切换的现代主题中尤为重要。</p>
+<p>从技术架构角度看，这个改动采用了最小侵入性的设计原则。波浪元素被放置在现有的<code>.site-intro</code>容器内，通过绝对定位精确控制其位置，确保不会影响现有的内容布局和交互逻辑。这种设计思路体现了”渐进增强”的理念，即使在不支持SVG的极少数环境下，页面功能也不会受到影响。</p>
+<h3 id="模板层面的结构优化"><a href="#模板层面的结构优化" class="headerlink" title="模板层面的结构优化"></a>模板层面的结构优化</h3><p>在EJS模板中，波浪SVG元素被放置在<code>.site-intro-meta</code>之后，这个位置选择是经过深思熟虑的。SVG元素需要覆盖在背景图片之上，但又不能遮挡主要内容，因此将其z-index设置为0，正好位于背景图片（z-index: -1）和内容（z-index: 3）之间。<code>preserveAspectRatio=&quot;none&quot;</code>属性确保了波浪能够完全填充容器宽度，无论屏幕尺寸如何变化都能保持一致的视觉效果。</p>
+<p>波浪路径的设计采用了三次贝塞尔曲线，通过控制点的精确调整，创造出了自然流畅的波浪形状。<code>M0,40 C240,90 480,0 720,40 C960,80 1200,20 1440,60</code>这个路径定义了一个双峰波浪，既不会过于夸张影响阅读，又足够明显能够起到视觉过渡的作用。这种设计在美学和功能性之间找到了很好的平衡点。</p>
+<h3 id="样式系统的深度集成"><a href="#样式系统的深度集成" class="headerlink" title="样式系统的深度集成"></a>样式系统的深度集成</h3><p>在SCSS层面，这次改动充分体现了现代CSS架构的设计理念。首先为<code>.site-intro</code>容器添加了<code>position: relative</code>和<code>overflow: hidden</code>，这为波浪元素的定位提供了可靠的上下文，同时确保波浪不会意外溢出容器边界。这种防御性编程的思维在现代前端开发中越来越重要。</p>
+<p>波浪元素的样式设计特别注重了主题系统的集成。通过使用<code>$body-background-color</code>变量，波浪的颜色会自动跟随主题切换，这在支持明暗模式的现代网站中是不可或缺的功能。<code>transition: $transition-animation</code>确保了颜色变化时的平滑过渡，提升了用户体验的连贯性。</p>
+<p><code>pointer-events: none</code>的设置体现了对用户体验的细致考虑。虽然波浪元素在视觉上很重要，但它不应该干扰用户的正常交互，比如点击或滚动。这种细节处理体现了成熟的前端开发思维。</p>
+<h3 id="暗色模式的适配策略"><a href="#暗色模式的适配策略" class="headerlink" title="暗色模式的适配策略"></a>暗色模式的适配策略</h3><p>暗色模式的适配采用了CSS变量覆盖的方式，这是现代主题开发的标准做法。通过在<code>dark.scss</code>中添加特定的样式规则，波浪的颜色会自动切换到暗色主题的背景色。这种设计不仅保持了代码的简洁性，还确保了主题切换时的一致性。</p>
+<p>从性能角度看，这种实现方式是非常高效的。SVG元素是矢量图形，无论屏幕分辨率如何都能保持清晰，而且文件体积很小。相比使用图片或复杂的CSS动画，SVG方案在性能和视觉效果之间达到了很好的平衡。</p>
+<h3 id="设计理念与技术取舍"><a href="#设计理念与技术取舍" class="headerlink" title="设计理念与技术取舍"></a>设计理念与技术取舍</h3><p>这次改动的设计理念可以概括为”优雅的渐进增强”。通过最小化的代码改动，实现了显著的视觉效果提升。技术选择上，SVG相比其他方案有几个明显优势：首先是可扩展性，SVG能够完美适配各种屏幕尺寸；其次是可维护性，路径可以通过简单的数值调整来改变波浪形状；最后是性能，SVG的渲染效率远高于复杂的CSS动画。</p>
+<p>在兼容性方面，SVG的浏览器支持度已经非常高，即使在较老的浏览器中也有良好的降级处理。<code>aria-hidden=&quot;true&quot;</code>属性的添加体现了无障碍设计的考虑，确保屏幕阅读器不会将装饰性的波浪元素识别为重要内容。</p>
+<h3 id="替代方案与未来改进方向"><a href="#替代方案与未来改进方向" class="headerlink" title="替代方案与未来改进方向"></a>替代方案与未来改进方向</h3><p>虽然当前的SVG方案已经很好地满足了需求，但仍有其他技术路径值得考虑。CSS的<code>clip-path</code>属性提供了另一种实现波浪效果的方式，通过定义复杂的裁剪路径可以实现类似的视觉效果。这种方案的优势是完全基于CSS，不需要额外的HTML元素，但缺点是浏览器兼容性相对较差，且路径定义相对复杂。</p>
+<p>另一个值得探索的方向是使用CSS动画让波浪产生轻微的动态效果。通过添加<code>@keyframes</code>动画，可以让波浪产生轻微的起伏效果，增加页面的生动性。这种方案需要在视觉效果和性能之间找到平衡，避免过度动画影响用户体验。</p>
+<h3 id="测试验证与质量保证"><a href="#测试验证与质量保证" class="headerlink" title="测试验证与质量保证"></a>测试验证与质量保证</h3><p>验证这次改动是否正确实现，可以从多个维度进行测试。首先是视觉测试，在不同屏幕尺寸下检查波浪是否能够正确显示和适配。其次是主题切换测试，确保在明暗模式之间切换时波浪颜色能够正确变化。最后是交互测试，确认波浪元素不会影响页面的正常交互功能。</p>
+<p>从技术角度，可以通过浏览器开发者工具检查SVG元素的渲染情况，确认z-index层级是否正确，以及CSS变量是否正确应用。性能方面，可以通过Chrome DevTools的Performance面板检查SVG渲染是否对页面性能造成明显影响。</p>
+<p>这次改动虽然看似简单，但体现了现代前端开发中对细节的追求和对用户体验的重视。通过合理的技术选择和精心的设计，一个小的视觉改进能够显著提升整体的用户体验，这正是优秀前端开发的核心价值所在。</p>
+
+    </article>
+    <!-- license -->
+        <div class="license-wrapper">
+            <p>Author：<a href="http://example.com">John Doe</a>
+            <p>Link：<a href="http://example.com/2025/08/11/My-New-Post/">http://example.com/2025/08/11/My-New-Post/</a>
+            <p>Publish date：<a href="http://example.com/2025/08/11/My-New-Post/">August 11th 2025, 7:34:23 pm</a>
+            <p>Update date：<a href="http://example.com/2025/08/11/My-New-Post/">August 12th 2025, 10:01:15 am</a>
+            <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
+        </div>
+    <!-- paginator -->
+    <ul class="post-paginator">
+        <li class="next">
+        </li>
+        <li class="previous">
+                <div class="prevSlogan">Previous Post</div>
+                <a href="/2025/08/11/hello-world/" title="Hello World">
+                    <div class="prevTitle">Hello World</div>
+                </a>
+        </li>
+    </ul>
+    <!-- comment -->
+        <div class="post-comment">
+            <!-- 来必力 City 版安装代码 -->
+
+            
+            
+            
+            <!-- utteranc评论 -->
+
+            <!-- partial('_partial/comment/changyan') -->
+            <!--PC版-->
+
+            
+            
+            
+        </div>
+    <!-- timeliness note -->
+    <!-- idea from: https://hexo.fluid-dev.com/posts/hexo-injector/#%E6%96%87%E7%AB%A0%E6%97%B6%E6%95%88%E6%80%A7%E6%8F%90%E7%A4%BA -->
+    <!-- Mathjax -->
+</main>
+
+                <!-- profile -->
+            </div>
+            <footer class="footer footer-unloaded">
+    <!-- social  -->
+        <div class="social">
+                            <a href="mailto:2893882513@qq.com" class="iconfont-archer email" title="email" ></a>
+                <a href="https://github.com/MeAuvs" class="iconfont-archer github" target="_blank" title="github"></a>
+                <span class="iconfont-archer wechat" title="wechat">
+                    <img class="profile-qr" src="https://meauvcom.oss-cn-beijing.aliyuncs.com/img/20250811105043852.jpg" />
+                </span>
+                <a href="https://www.zhihu.com/people/cheng-xuan-33-4?utm_source=wechat_session&utm_medium=social&utm_oi=1107379335056605184" class="iconfont-archer zhihu" target="_blank" title="zhihu"></a>
+
+        </div>
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span><span id="theme-info" class="desktop-only" style="white-space: nowrap;">Cloud storage services provided by <a href="https://github.com/" target="_blank">GitHub </a> and <a href="https://www.aliyun.com" target="_blank">Alibaba Cloud</a></span>
+    </div>
+    <!-- website approve for Chinese user -->
+    <!-- 不蒜子  -->
+        <div class="busuanzi-container">
+                <span id="busuanzi_container_site_pv">PV: <span id="busuanzi_value_site_pv"></span> :)</span>
+        </div>
+</footer>
+
+        </div>
+        <!-- toc -->
+            <div class="toc-wrapper toc-wrapper-loding" style=    top:50vh;
+>
+                <div class="toc-catalog">
+                    <span class="iconfont-archer catalog-icon">&#xe613;</span><span>CATALOG</span>
+                </div>
+                <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90%E7%AC%AC%E4%B8%80%E9%83%A8%E5%88%86%EF%BC%9A%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E3%80%91"><span class="toc-number">1.</span> <span class="toc-text">【第一部分：完整代码】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E6%A8%A1%E6%9D%BF%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9"><span class="toc-number">1.1.</span> <span class="toc-text">1. 模板文件修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E4%B8%BB%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9"><span class="toc-number">1.2.</span> <span class="toc-text">2. 主样式文件修改</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E6%A0%B7%E5%BC%8F%E4%BF%AE%E6%94%B9"><span class="toc-number">1.3.</span> <span class="toc-text">3. 暗色模式样式修改</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E3%80%90%E7%AC%AC%E4%BA%8C%E9%83%A8%E5%88%86%EF%BC%9A%E8%AF%A6%E7%BB%86%E6%94%B9%E5%8A%A8%E5%88%86%E6%9E%90%E6%96%87%E7%AB%A0%E3%80%91"><span class="toc-number">2.</span> <span class="toc-text">【第二部分：详细改动分析文章】</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E9%A1%B6%E5%9B%BE%E6%B3%A2%E6%B5%AA%E8%BF%87%E6%B8%A1%E6%95%88%E6%9E%9C%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AE%9E%E7%8E%B0%E4%B8%8E%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%80%83"><span class="toc-number">2.1.</span> <span class="toc-text">博客顶图波浪过渡效果的技术实现与设计思考</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B4%E4%BD%93%E8%AE%BE%E8%AE%A1%E6%80%9D%E8%B7%AF%E4%B8%8E%E5%AE%9E%E7%8E%B0%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.1.</span> <span class="toc-text">整体设计思路与实现策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E5%B1%82%E9%9D%A2%E7%9A%84%E7%BB%93%E6%9E%84%E4%BC%98%E5%8C%96"><span class="toc-number">2.1.2.</span> <span class="toc-text">模板层面的结构优化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B7%E5%BC%8F%E7%B3%BB%E7%BB%9F%E7%9A%84%E6%B7%B1%E5%BA%A6%E9%9B%86%E6%88%90"><span class="toc-number">2.1.3.</span> <span class="toc-text">样式系统的深度集成</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9A%97%E8%89%B2%E6%A8%A1%E5%BC%8F%E7%9A%84%E9%80%82%E9%85%8D%E7%AD%96%E7%95%A5"><span class="toc-number">2.1.4.</span> <span class="toc-text">暗色模式的适配策略</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E7%90%86%E5%BF%B5%E4%B8%8E%E6%8A%80%E6%9C%AF%E5%8F%96%E8%88%8D"><span class="toc-number">2.1.5.</span> <span class="toc-text">设计理念与技术取舍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E4%B8%8E%E6%9C%AA%E6%9D%A5%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91"><span class="toc-number">2.1.6.</span> <span class="toc-text">替代方案与未来改进方向</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E9%AA%8C%E8%AF%81%E4%B8%8E%E8%B4%A8%E9%87%8F%E4%BF%9D%E8%AF%81"><span class="toc-number">2.1.7.</span> <span class="toc-text">测试验证与质量保证</span></a></li></ol></li></ol></li></ol>
+            </div>
+        <!-- sidebar -->
+        <div class="sidebar sidebar-hide">
+    <ul class="sidebar-tabs sidebar-tabs-active-0">
+        <li class="sidebar-tab-archives"><span class="iconfont-archer">&#xe67d;</span><span class="tab-name">Archive</span></li>
+        <li class="sidebar-tab-tags"><span class="iconfont-archer">&#xe61b;</span><span class="tab-name">Tag</span></li>
+        <li class="sidebar-tab-categories"><span class="iconfont-archer">&#xe666;</span><span class="tab-name">Cate</span></li>
+    </ul>
+    <div class="sidebar-content sidebar-content-show-archive">
+        <div class="sidebar-panel-archives">
+    <!-- 在 ejs 中将 archive 按照时间排序 -->
+        
+        
+        
+    <div class="total-and-search">
+        <div class="total-archive">
+        Total : 3
+        </div>
+        <!-- search  -->
+    </div>
+    <div class="post-archive">
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2025/08/11/hello-world/">Hello World</a>
+        </li>
+                </ul>
+            <div class="archive-year"> 2025 </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/11</span>
+            <a class="archive-post-title" href="/2025/08/11/My-New-Post/">My personalized blog practice</a>
+        </li>
+        <li class="archive-post-item">
+            <span class="archive-post-date">01/15</span>
+            <a class="archive-post-title" href="/2025/01/15/custom-excerpt-demo/">自定义摘要功能演示</a>
+        </li>
+            </ul>
+    </div>
+</div>
+
+        <div class="sidebar-panel-tags">
+    <div class="sidebar-tags-name">
+            <span class="sidebar-tag-name" data-tags="功能演示">
+                <span class="iconfont-archer">&#xe606;</span>
+                功能演示
+            </span>
+            <span class="sidebar-tag-name" data-tags="博客技巧">
+                <span class="iconfont-archer">&#xe606;</span>
+                博客技巧
+            </span>
+    </div>
+    <div class="iconfont-archer sidebar-tags-empty">&#xe678;</div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+        缺失模块，请参考主题文档进行安装配置：https://github.com/fi3ework/hexo-theme-archer#%E5%AE%89%E8%A3%85%E4%B8%BB%E9%A2%98
+    </div> 
+    <div class="sidebar-tags-list"></div>
+</div>
+
+        <div class="sidebar-panel-categories">
+    <div class="sidebar-categories-name">
+    </div>
+    <div class="iconfont-archer sidebar-categories-empty">&#xe678;</div>
+    <div class="sidebar-categories-list"></div>
+</div>
+
+    </div>
+</div>
+
+        <!-- site-meta -->
+        <script>
+    var siteMetaRoot = "/"
+    if (siteMetaRoot === "undefined") {
+        siteMetaRoot = '/'
+    }
+    var siteMeta = {
+        url: "http://example.com",
+        root: siteMetaRoot,
+        author: "John Doe"
+    }
+</script>
+
+        <!-- import experimental options here -->
+        <!-- Custom Font -->
+
+        <!-- main func -->
+        <script src="/scripts/main.js"></script>
+        <!-- fancybox -->
+        <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0.36/dist/fancybox/fancybox.umd.js" onload="window.Fancybox.bind('[data-fancybox]')" defer></script>
+        <!-- algolia -->
+        <!-- busuanzi -->
+            <script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+        <!-- async load share.js -->
+            <script src="/scripts/share.js" async></script>
+        <!-- mermaid -->
+    </body>
+</html>
