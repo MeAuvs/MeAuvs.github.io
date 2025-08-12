@@ -10,16 +10,16 @@
     <meta name="copyright" content="John Doe">
         <meta name="keywords" content="hexo,hexo-theme,hexo-blog">
     <meta name="description" content="">
-    <meta name="description" content=".about-hero { display: flex; justify-content: center; align-items: center; margin: 0 0 6px; } .about-hero .avatar-orbit { --size: min(60vw, 280px); position: relative; width: var(--size); height: var">
+    <meta name="description" content=".about-greeting { display: flex; align-items: center; gap: 14px; margin: 8px 0 18px; line-height: 1; } .about-greeting .greet-text { margin: 0; font-weight: 800; font-size: clamp(40px, 9vw, 96px); le">
 <meta property="og:type" content="website">
 <meta property="og:title" content="About">
 <meta property="og:url" content="http://example.com/about/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content=".about-hero { display: flex; justify-content: center; align-items: center; margin: 0 0 6px; } .about-hero .avatar-orbit { --size: min(60vw, 280px); position: relative; width: var(--size); height: var">
+<meta property="og:description" content=".about-greeting { display: flex; align-items: center; gap: 14px; margin: 8px 0 18px; line-height: 1; } .about-greeting .greet-text { margin: 0; font-weight: 800; font-size: clamp(40px, 9vw, 96px); le">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/avatar/Misaka.jpg">
 <meta property="article:published_time" content="2025-08-12T02:46:37.000Z">
-<meta property="article:modified_time" content="2025-08-12T12:11:29.776Z">
+<meta property="article:modified_time" content="2025-08-12T16:08:00.265Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://example.com/avatar/Misaka.jpg">
@@ -484,6 +484,21 @@
                 <main class="main post-page">
     <article class="article-entry">
         <style>
+.about-greeting { display: flex; align-items: center; gap: 14px; margin: 8px 0 18px; line-height: 1; }
+.about-greeting .greet-text { margin: 0; font-weight: 800; font-size: clamp(40px, 9vw, 96px); letter-spacing: .5px; background: linear-gradient(90deg, #b76b00 0%, #c77a03 35%, #d78906 65%, #e7980a 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.about-greeting .wave { position: relative; display: inline-block; font-size: clamp(40px, 9vw, 96px); transform-origin: 70% 70%; animation: wave-hand 2.4s ease-in-out infinite; }
+.about-greeting .wave::before,
+.about-greeting .wave::after { content: ""; position: absolute; border: 3px solid #57A9FB; border-left-color: transparent; border-bottom-color: transparent; width: 16px; height: 16px; border-radius: 50%; right: -12px; top: 14%; transform: rotate(25deg); opacity: .9; }
+.about-greeting .wave::after { width: 26px; height: 26px; right: -20px; top: -4%; opacity: .55; }
+@keyframes wave-hand {
+  0% { transform: rotate(0deg); }
+  10% { transform: rotate(14deg); }
+  20% { transform: rotate(-8deg); }
+  30% { transform: rotate(14deg); }
+  40% { transform: rotate(-4deg); }
+  50% { transform: rotate(10deg); }
+  60%, 100% { transform: rotate(0deg); }
+}
 .about-hero { display: flex; justify-content: center; align-items: center; margin: 0 0 6px; }
 .about-hero .avatar-orbit { --size: min(60vw, 280px); position: relative; width: var(--size); height: var(--size); }
 .about-hero .avatar { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: clamp(96px, 28%, 150px); height: clamp(96px, 28%, 150px); border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,.15); border: 4px solid rgba(255,255,255,.85); }
@@ -518,6 +533,39 @@
 @media (prefers-reduced-motion: reduce) {
   .about-hero .chip { transition: none !important; }
   .about-hero .chip-inner { animation: none !important; }
+  .about-greeting .wave { animation: none !important; }
+}
+
+/* cards below body */
+.about-info-cards { display: grid; gap: 18px; margin: 18px 0 6px; }
+
+.card { position: relative; border-radius: 18px; background: #fff; border: 1px solid rgba(0,0,0,.06); box-shadow: 0 10px 28px rgba(0,0,0,.06); overflow: hidden; }
+@media (prefers-color-scheme: dark) {
+  .card { background: #141414; border-color: rgba(255,255,255,.08); box-shadow: 0 14px 30px rgba(0,0,0,.45); }
+}
+
+/* (Removed) Left/Right MBTI split cards styles */
+
+/* Map card */
+.map-card { height: min(34vw, 220px); }
+@media (max-width: 640px) { /* make map taller on phones */
+  .map-card { height: min(64vw, 300px); }
+}
+.map-embed { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.map-overlay { position: absolute; inset: 0; pointer-events: none; }
+.map-chip { position: absolute; left: 16px; bottom: 16px; background: rgba(255,255,255,.85); border: 1px solid rgba(0,0,0,.08); color: #111; padding: 8px 12px; border-radius: 12px; font-weight: 700; box-shadow: 0 6px 16px rgba(0,0,0,.12); backdrop-filter: blur(4px); }
+.map-title { position: absolute; left: 16px; top: 14px; font-weight: 800; color: #111; background: rgba(255,255,255,.85); border-radius: 12px; padding: 6px 10px; border: 1px solid rgba(0,0,0,.08); box-shadow: 0 6px 16px rgba(0,0,0,.12); }
+.map-pin { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); width: 18px; height: 18px; border-radius: 50%; background: #2f80ff; box-shadow: 0 0 0 6px rgba(47,128,255,.25), 0 6px 16px rgba(0,0,0,.25); }
+
+/* Support theme's JS-driven dark mode by toggling .theme-dark on <html> */
+.theme-dark .map-embed { filter: brightness(0.78) saturate(0.9) contrast(0.92); }
+.theme-dark .map-chip, .theme-dark .map-title { background: rgba(20,20,20,.78); color: #f1f1f1; border-color: rgba(255,255,255,.12); }
+.theme-dark .map-pin { box-shadow: 0 0 0 7px rgba(47,128,255,.35), 0 6px 16px rgba(0,0,0,.35); }
+@media (prefers-color-scheme: dark) {
+  .map-embed { filter: brightness(0.78) saturate(0.9) contrast(0.92); }
+  .map-chip, .map-title { background: rgba(20,20,20,.78); color: #f1f1f1; border-color: rgba(255,255,255,.12); }
+  .map-pin { box-shadow: 0 0 0 7px rgba(47,128,255,.35), 0 6px 16px rgba(0,0,0,.35); }
+  .hobby-line { color: #d9d9d9; }
 }
 </style>
 
@@ -538,7 +586,7 @@
   const avatar = container.querySelector('.avatar');
 
   const tags = [
-    "Design","JavaScript","Hexo","CSS","Node.js","Writing","Photography"
+    "Design","JavaScript","HTML","CSS","Python","Writing","Photography"
   ];
 
   const count = 7; // fixed
@@ -577,16 +625,51 @@
 })();
 </script>
 
-<p><strong>Welcome to my digital sanctuary—a space where thoughts converge, experiments unfold, and creativity takes shape.  Compared to the immediacy and fragmentation of social media, this space focuses more on depth and the purity of expression. </strong>
-  </p>
+<script>
+// Ensure page-level dark styles react to theme toggler (theme injects link#stylesheet-theme-dark)
+(function(){
+  function applyThemeClass(){
+    const isDark = !!document.getElementById('stylesheet-theme-dark');
+    document.documentElement.classList.toggle('theme-dark', isDark);
+  }
+  applyThemeClass();
+  // Observe <head> for dark stylesheet add/remove
+  const headObserver = new MutationObserver(() => applyThemeClass());
+  headObserver.observe(document.head, { childList: true });
+  // Also hook header theme button if present
+  const btn = document.querySelector('.header-theme-btn');
+  if (btn) btn.addEventListener('click', () => setTimeout(applyThemeClass, 0));
+})();
+</script>
 
+<div class="about-greeting" aria-label="Greeting">
+  <h1 class="greet-text">Hi, there!</h1>
+  <span class="wave" role="img" aria-label="waving hand">👋</span>
+</div>
+
+<p><strong>Welcome to my digital sanctuary—a space where thoughts converge, experiments unfold, and creativity takes shape.  Compared to the immediacy and fragmentation of social media, this space focuses more on depth and the purity of expression. </strong></p>
+<div class="about-info-cards">
+  <!-- removed MBTI split cards -->
+
+  <div class="card map-card">
+    <iframe class="map-embed" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=108.82,34.16,109.06,34.42&layer=mapnik&marker=34.27,108.94"></iframe>
+    <div class="map-overlay">
+      <div class="map-title">📍 现居</div>
+      <div class="map-pin" aria-hidden="true"></div>
+      <div class="map-chip">西安市，莲湖区</div>
+    </div>
+  </div>
+</div>
+    	<p><strong>At the bottom of articles or pages, you can leave comments to interact and communicate with me. The comment system is powered by Giscus, utilizing GitHub Discussions. To post a comment, you need to authorize your GitHub account.</strong></p>
+		<p>在文章或页面底部，可以发表评论留言与我交流互动。评论系统利用 GitHub Discussions 部署 Giscus 实现，发表评论需要授权 GitHub 账号</p>
+		<p><strong>Note ⚠️: Please refrain from posting meaningless spam comments, advertisements, or similar content, as they will be considered junk comments. <font color="#FF0000">Do not attempt penetration testing.</font></strong></p>
+		<p>注意⚠️：请勿填写无意义的骚扰评论、广告等，否则会被视为垃圾评论。<font color="#FF0000">请勿进行渗透测试。</font></p>
+		<p><strong>If you have suggestions or feedback regarding the blog’s content, layout, or design, feel free to contact me via email or leave a comment.</strong></p>
+		<p>如有关于博客内容、排版等的提议与意见，可通过邮件或评论向我反馈。</p>
+    
     </article>
     <!-- license -->
-        <div class="license-wrapper">
-            <p>Author：<a href="http://example.com">John Doe</a>
-            <p>Link：<a href="http://example.com/about/index.html">http://example.com/about/index.html</a>
-            <p>Publish date：<a href="http://example.com/about/index.html">August 12th 2025, 10:46:37 am</a>
-            <p>Update date：<a href="http://example.com/about/index.html">August 12th 2025, 8:11:29 pm</a>
+        <div class="license-wrapper" style="text-align: center;">
             <p>License：本文采用<a rel="license noopener" target="_blank" href="http://creativecommons.org/licenses/by-nc/4.0/">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可</p>
         </div>
     <!-- paginator -->
@@ -663,13 +746,6 @@
         <!-- search  -->
     </div>
     <div class="post-archive">
-            <div class="archive-year"> Invalid date </div>
-            <ul class="year-list">
-        <li class="archive-post-item">
-            <span class="archive-post-date">Invalid date</span>
-            <a class="archive-post-title" href="/2025/08/11/hello-world/">Hello World</a>
-        </li>
-                </ul>
             <div class="archive-year"> 2025 </div>
             <ul class="year-list">
         <li class="archive-post-item">
@@ -679,6 +755,13 @@
         <li class="archive-post-item">
             <span class="archive-post-date">01/15</span>
             <a class="archive-post-title" href="/2025/01/15/custom-excerpt-demo/">自定义摘要功能演示</a>
+        </li>
+                </ul>
+            <div class="archive-year"> Invalid date </div>
+            <ul class="year-list">
+        <li class="archive-post-item">
+            <span class="archive-post-date">Invalid date</span>
+            <a class="archive-post-title" href="/2025/08/11/hello-world/">Hello World</a>
         </li>
             </ul>
     </div>
