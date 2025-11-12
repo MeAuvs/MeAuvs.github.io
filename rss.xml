@@ -115,189 +115,7 @@ Music Production and Creation&lt;/p&gt;
 &lt;li&gt;&lt;a href=&quot;https://icones.js.org/&quot;&gt;icones&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Deployment Mode&lt;/h2&gt;
-&lt;p&gt;See &lt;a href=&quot;/docs/deployment&quot;&gt;Deployment&lt;/a&gt; for details.&lt;/p&gt;</content:encoded><h:img src="/_astro/thumbnail.H3t_xmcX.jpg"/><enclosure url="/_astro/thumbnail.H3t_xmcX.jpg"/></item><item><title>Markdown Syntax Support</title><link>https://meauvs.github.io/blog/markdown</link><guid isPermaLink="true">https://meauvs.github.io/blog/markdown</guid><description>Markdown is a lightweight markup language.</description><pubDate>Wed, 26 Jul 2023 08:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Basic Syntax&lt;/h2&gt;
-&lt;p&gt;Markdown is a lightweight and easy-to-use syntax for styling your writing.&lt;/p&gt;
-&lt;h3&gt;Headers&lt;/h3&gt;
-&lt;p&gt;When the content of the article is extensive, you can use headers to segment:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;# Header 1
-
-## Header 2
-
-## Large Header
-
-### Small Header
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Header previews would disrupt the structure of the article, so they are not displayed here.&lt;/p&gt;
-&lt;h3&gt;Bold and Italics&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;_Italic text_ and **Bold text**, together will be **_Bold Italic text_**
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Italic text&lt;/em&gt; and &lt;strong&gt;Bold text&lt;/strong&gt;, together will be &lt;strong&gt;&lt;em&gt;Bold Italic text&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
-&lt;h3&gt;Links&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;Text link [Link Name](http://link-url)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;Text link &lt;a href=&quot;http://link-url&quot;&gt;Link Name&lt;/a&gt;&lt;/p&gt;
-&lt;h3&gt;Inline Code&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;This is an `inline code`
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;This is an &lt;code&gt;inline code&lt;/code&gt;&lt;/p&gt;
-&lt;h3&gt;Code Blocks&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;```js
-// calculate fibonacci
-function fibonacci(n) {
-  if (n &amp;#x3C;= 1) return 1
-  const result = fibonacci(n - 1) + fibonacci(n - 2) // [\!code --]
-  return fibonacci(n - 1) + fibonacci(n - 2) // [\!code ++]
-}
-```
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;// calculate fibonacci
-function fibonacci(n) {
-  if (n &amp;#x3C;= 1) return 1
-  const result = fibonacci(n - 1) + fibonacci(n - 2) // [!code --]
-  return fibonacci(n - 1) + fibonacci(n - 2) // [!code ++]
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Currently using shiki as the code highlighting plugin. For supported languages, refer to &lt;a href=&quot;https://shiki.matsu.io/languages.html&quot;&gt;Shiki: Languages&lt;/a&gt;.&lt;/p&gt;
-&lt;h3&gt;Inline Formula&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;This is an inline formula $e^{i\pi} + 1 = 0$
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;This is an inline formula $e^{i\pi} + 1 = 0$&lt;/p&gt;
-&lt;h3&gt;Formula Blocks&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;$$
-\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi i x \xi} \, dx
-$$
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;$$
-\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi i x \xi} , dx
-$$&lt;/p&gt;
-&lt;p&gt;Currently using KaTeX as the math formula plugin. For supported syntax, refer to &lt;a href=&quot;https://katex.org/docs/supported.html&quot;&gt;KaTeX Supported Functions&lt;/a&gt;.&lt;/p&gt;
-&lt;h4&gt;Images&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;![CWorld](https://cravatar.cn/avatar/1ffe42aa45a6b1444a786b1f32dfa8aa?s=200)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;https://cravatar.cn/avatar/1ffe42aa45a6b1444a786b1f32dfa8aa?s=200&quot; alt=&quot;CWorld&quot;&gt;&lt;/p&gt;
-&lt;h4&gt;Strikethrough&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;~~Strikethrough~~
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;~~Strikethrough~~&lt;/p&gt;
-&lt;h3&gt;Lists&lt;/h3&gt;
-&lt;p&gt;Regular unordered list&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;- 1
-- 2
-- 3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;1&lt;/li&gt;
-&lt;li&gt;2&lt;/li&gt;
-&lt;li&gt;3&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Regular ordered list&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;1. GPT-4
-2. Claude Opus
-3. LLaMa
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;GPT-4&lt;/li&gt;
-&lt;li&gt;Claude Opus&lt;/li&gt;
-&lt;li&gt;LLaMa&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;You can continue to nest syntax within lists.&lt;/p&gt;
-&lt;h3&gt;Blockquotes&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;&gt; Gunshot, thunder, sword rise. A scene of flowers and blood.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Gunshot, thunder, sword rise. A scene of flowers and blood.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;You can continue to nest syntax within blockquotes.&lt;/p&gt;
-&lt;h3&gt;Line Breaks&lt;/h3&gt;
-&lt;p&gt;Markdown needs a blank line to separate paragraphs.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;If you don&apos;t leave a blank line
-it will be in one paragraph
-
-First paragraph
-
-Second paragraph
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;If you don&apos;t leave a blank line
-it will be in one paragraph&lt;/p&gt;
-&lt;p&gt;First paragraph&lt;/p&gt;
-&lt;p&gt;Second paragraph&lt;/p&gt;
-&lt;h3&gt;Separators&lt;/h3&gt;
-&lt;p&gt;If you have the habit of writing separators, you can start a new line and enter three dashes &lt;code&gt;---&lt;/code&gt; or asterisks &lt;code&gt;***&lt;/code&gt;. Leave a blank line before and after when there are paragraphs:&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;---
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2&gt;Advanced Techniques&lt;/h2&gt;
-&lt;h3&gt;Inline HTML Elements&lt;/h3&gt;
-&lt;p&gt;Currently, only some inline HTML elements are supported, including &lt;code&gt;&amp;#x3C;kdb&gt; &amp;#x3C;b&gt; &amp;#x3C;i&gt; &amp;#x3C;em&gt; &amp;#x3C;sup&gt; &amp;#x3C;sub&gt; &amp;#x3C;br&gt;&lt;/code&gt;, such as&lt;/p&gt;
-&lt;h4&gt;Key Display&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;Use &amp;#x3C;kbd&gt;Ctrl&amp;#x3C;/kbd&gt; + &amp;#x3C;kbd&gt;Alt&amp;#x3C;/kbd&gt; + &amp;#x3C;kbd&gt;Del&amp;#x3C;/kbd&gt; to reboot the computer
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;Use Ctrl + Alt + Del to reboot the computer&lt;/p&gt;
-&lt;h4&gt;Bold Italics&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;&amp;#x3C;b&gt; Markdown also applies here, such as _bold_ &amp;#x3C;/b&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt; Markdown also applies here, such as &lt;em&gt;bold&lt;/em&gt; &lt;/p&gt;
-&lt;h3&gt;Other HTML Writing&lt;/h3&gt;
-&lt;h4&gt;Foldable Blocks&lt;/h4&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;&amp;#x3C;details&gt;&amp;#x3C;summary&gt;Click to expand&amp;#x3C;/summary&gt;It is hidden&amp;#x3C;/details&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;h3&gt;Tables&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;| Header1  | Header2  |
-| -------- | -------- |
-| Content1 | Content2 |
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;| Header1  | Header2  |
-| -------- | -------- |
-| Content1 | Content2 |&lt;/p&gt;
-&lt;h3&gt;Footnotes&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;Use [^footnote] to add a footnote at the point of reference.
-
-Then, at the end of the document, add the content of the footnote (it will be rendered at the end of the article by default).
-
-[^footnote]: Here is the content of the footnote
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;Use [^footnote] to add a footnote at the point of reference.&lt;/p&gt;
-&lt;p&gt;Then, at the end of the document, add the content of the footnote (it will be rendered at the end of the article by default).&lt;/p&gt;
-&lt;p&gt;[^footnote]: Here is the content of the footnote&lt;/p&gt;
-&lt;h3&gt;To-Do Lists&lt;/h3&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;- [ ] Incomplete task
-- [x] Completed task
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;[ ] Incomplete task&lt;/li&gt;
-&lt;li&gt;[x] Completed task&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;Symbol Escaping&lt;/h3&gt;
-&lt;p&gt;If you need to use markdown symbols like _ # * in your description but don&apos;t want them to be escaped, you can add a backslash before these symbols, such as &lt;code&gt;\_&lt;/code&gt; &lt;code&gt;\#&lt;/code&gt; &lt;code&gt;\*&lt;/code&gt; to avoid it.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;\_Don&apos;t want the text here to be italic\_
-
-\*\*Don&apos;t want the text here to be bold\*\*
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Preview:&lt;/p&gt;
-&lt;p&gt;_Don&apos;t want the text here to be italic_&lt;/p&gt;
-&lt;p&gt;**Don&apos;t want the text here to be bold**&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2&gt;Embedding Astro Components&lt;/h2&gt;
-&lt;p&gt;See &lt;a href=&quot;/docs/integrations/components&quot;&gt;User Components&lt;/a&gt; and &lt;a href=&quot;/docs/integrations/advanced&quot;&gt;Advanced Components&lt;/a&gt; for details.&lt;/p&gt;</content:encoded><h:img src="/_astro/thumbnail.HAXFr_hw.jpg"/><enclosure url="/_astro/thumbnail.HAXFr_hw.jpg"/></item><item><title>Markdown 语法支持</title><link>https://meauvs.github.io/blog/markdown-zh</link><guid isPermaLink="true">https://meauvs.github.io/blog/markdown-zh</guid><description>Markdown 是一种轻量级的「标记语言」。</description><pubDate>Wed, 26 Jul 2023 08:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;基本语法&lt;/h2&gt;
+&lt;p&gt;See &lt;a href=&quot;/docs/deployment&quot;&gt;Deployment&lt;/a&gt; for details.&lt;/p&gt;</content:encoded><h:img src="/_astro/thumbnail.H3t_xmcX.jpg"/><enclosure url="/_astro/thumbnail.H3t_xmcX.jpg"/></item><item><title>Markdown 语法支持</title><link>https://meauvs.github.io/blog/markdown-zh</link><guid isPermaLink="true">https://meauvs.github.io/blog/markdown-zh</guid><description>Markdown 是一种轻量级的「标记语言」。</description><pubDate>Wed, 26 Jul 2023 08:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;基本语法&lt;/h2&gt;
 &lt;p&gt;Markdown 是一种轻量级且易于使用的语法，用于为您的写作设计风格。&lt;/p&gt;
 &lt;h3&gt;标题&lt;/h3&gt;
 &lt;p&gt;文章内容较多时，可以用标题分段：&lt;/p&gt;
@@ -482,4 +300,186 @@ $$&lt;/p&gt;
 &lt;p&gt;**不想这里的文本被加粗**&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2&gt;内嵌 Astro 组件&lt;/h2&gt;
+&lt;p&gt;See &lt;a href=&quot;/docs/integrations/components&quot;&gt;User Components&lt;/a&gt; and &lt;a href=&quot;/docs/integrations/advanced&quot;&gt;Advanced Components&lt;/a&gt; for details.&lt;/p&gt;</content:encoded><h:img src="/_astro/thumbnail.HAXFr_hw.jpg"/><enclosure url="/_astro/thumbnail.HAXFr_hw.jpg"/></item><item><title>Markdown Syntax Support</title><link>https://meauvs.github.io/blog/markdown</link><guid isPermaLink="true">https://meauvs.github.io/blog/markdown</guid><description>Markdown is a lightweight markup language.</description><pubDate>Wed, 26 Jul 2023 08:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Basic Syntax&lt;/h2&gt;
+&lt;p&gt;Markdown is a lightweight and easy-to-use syntax for styling your writing.&lt;/p&gt;
+&lt;h3&gt;Headers&lt;/h3&gt;
+&lt;p&gt;When the content of the article is extensive, you can use headers to segment:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;# Header 1
+
+## Header 2
+
+## Large Header
+
+### Small Header
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Header previews would disrupt the structure of the article, so they are not displayed here.&lt;/p&gt;
+&lt;h3&gt;Bold and Italics&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;_Italic text_ and **Bold text**, together will be **_Bold Italic text_**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Italic text&lt;/em&gt; and &lt;strong&gt;Bold text&lt;/strong&gt;, together will be &lt;strong&gt;&lt;em&gt;Bold Italic text&lt;/em&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;h3&gt;Links&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;Text link [Link Name](http://link-url)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;Text link &lt;a href=&quot;http://link-url&quot;&gt;Link Name&lt;/a&gt;&lt;/p&gt;
+&lt;h3&gt;Inline Code&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;This is an `inline code`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;This is an &lt;code&gt;inline code&lt;/code&gt;&lt;/p&gt;
+&lt;h3&gt;Code Blocks&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;```js
+// calculate fibonacci
+function fibonacci(n) {
+  if (n &amp;#x3C;= 1) return 1
+  const result = fibonacci(n - 1) + fibonacci(n - 2) // [\!code --]
+  return fibonacci(n - 1) + fibonacci(n - 2) // [\!code ++]
+}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-js&quot;&gt;// calculate fibonacci
+function fibonacci(n) {
+  if (n &amp;#x3C;= 1) return 1
+  const result = fibonacci(n - 1) + fibonacci(n - 2) // [!code --]
+  return fibonacci(n - 1) + fibonacci(n - 2) // [!code ++]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Currently using shiki as the code highlighting plugin. For supported languages, refer to &lt;a href=&quot;https://shiki.matsu.io/languages.html&quot;&gt;Shiki: Languages&lt;/a&gt;.&lt;/p&gt;
+&lt;h3&gt;Inline Formula&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;This is an inline formula $e^{i\pi} + 1 = 0$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;This is an inline formula $e^{i\pi} + 1 = 0$&lt;/p&gt;
+&lt;h3&gt;Formula Blocks&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;$$
+\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi i x \xi} \, dx
+$$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;$$
+\hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi i x \xi} , dx
+$$&lt;/p&gt;
+&lt;p&gt;Currently using KaTeX as the math formula plugin. For supported syntax, refer to &lt;a href=&quot;https://katex.org/docs/supported.html&quot;&gt;KaTeX Supported Functions&lt;/a&gt;.&lt;/p&gt;
+&lt;h4&gt;Images&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;![CWorld](https://cravatar.cn/avatar/1ffe42aa45a6b1444a786b1f32dfa8aa?s=200)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://cravatar.cn/avatar/1ffe42aa45a6b1444a786b1f32dfa8aa?s=200&quot; alt=&quot;CWorld&quot;&gt;&lt;/p&gt;
+&lt;h4&gt;Strikethrough&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;~~Strikethrough~~
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;~~Strikethrough~~&lt;/p&gt;
+&lt;h3&gt;Lists&lt;/h3&gt;
+&lt;p&gt;Regular unordered list&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;- 1
+- 2
+- 3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1&lt;/li&gt;
+&lt;li&gt;2&lt;/li&gt;
+&lt;li&gt;3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Regular ordered list&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;1. GPT-4
+2. Claude Opus
+3. LLaMa
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;GPT-4&lt;/li&gt;
+&lt;li&gt;Claude Opus&lt;/li&gt;
+&lt;li&gt;LLaMa&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You can continue to nest syntax within lists.&lt;/p&gt;
+&lt;h3&gt;Blockquotes&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;&gt; Gunshot, thunder, sword rise. A scene of flowers and blood.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Gunshot, thunder, sword rise. A scene of flowers and blood.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;You can continue to nest syntax within blockquotes.&lt;/p&gt;
+&lt;h3&gt;Line Breaks&lt;/h3&gt;
+&lt;p&gt;Markdown needs a blank line to separate paragraphs.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;If you don&apos;t leave a blank line
+it will be in one paragraph
+
+First paragraph
+
+Second paragraph
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;If you don&apos;t leave a blank line
+it will be in one paragraph&lt;/p&gt;
+&lt;p&gt;First paragraph&lt;/p&gt;
+&lt;p&gt;Second paragraph&lt;/p&gt;
+&lt;h3&gt;Separators&lt;/h3&gt;
+&lt;p&gt;If you have the habit of writing separators, you can start a new line and enter three dashes &lt;code&gt;---&lt;/code&gt; or asterisks &lt;code&gt;***&lt;/code&gt;. Leave a blank line before and after when there are paragraphs:&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;---
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Advanced Techniques&lt;/h2&gt;
+&lt;h3&gt;Inline HTML Elements&lt;/h3&gt;
+&lt;p&gt;Currently, only some inline HTML elements are supported, including &lt;code&gt;&amp;#x3C;kdb&gt; &amp;#x3C;b&gt; &amp;#x3C;i&gt; &amp;#x3C;em&gt; &amp;#x3C;sup&gt; &amp;#x3C;sub&gt; &amp;#x3C;br&gt;&lt;/code&gt;, such as&lt;/p&gt;
+&lt;h4&gt;Key Display&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;Use &amp;#x3C;kbd&gt;Ctrl&amp;#x3C;/kbd&gt; + &amp;#x3C;kbd&gt;Alt&amp;#x3C;/kbd&gt; + &amp;#x3C;kbd&gt;Del&amp;#x3C;/kbd&gt; to reboot the computer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;Use Ctrl + Alt + Del to reboot the computer&lt;/p&gt;
+&lt;h4&gt;Bold Italics&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;&amp;#x3C;b&gt; Markdown also applies here, such as _bold_ &amp;#x3C;/b&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt; Markdown also applies here, such as &lt;em&gt;bold&lt;/em&gt; &lt;/p&gt;
+&lt;h3&gt;Other HTML Writing&lt;/h3&gt;
+&lt;h4&gt;Foldable Blocks&lt;/h4&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;&amp;#x3C;details&gt;&amp;#x3C;summary&gt;Click to expand&amp;#x3C;/summary&gt;It is hidden&amp;#x3C;/details&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;h3&gt;Tables&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;| Header1  | Header2  |
+| -------- | -------- |
+| Content1 | Content2 |
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;| Header1  | Header2  |
+| -------- | -------- |
+| Content1 | Content2 |&lt;/p&gt;
+&lt;h3&gt;Footnotes&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;Use [^footnote] to add a footnote at the point of reference.
+
+Then, at the end of the document, add the content of the footnote (it will be rendered at the end of the article by default).
+
+[^footnote]: Here is the content of the footnote
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;Use [^footnote] to add a footnote at the point of reference.&lt;/p&gt;
+&lt;p&gt;Then, at the end of the document, add the content of the footnote (it will be rendered at the end of the article by default).&lt;/p&gt;
+&lt;p&gt;[^footnote]: Here is the content of the footnote&lt;/p&gt;
+&lt;h3&gt;To-Do Lists&lt;/h3&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;- [ ] Incomplete task
+- [x] Completed task
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;[ ] Incomplete task&lt;/li&gt;
+&lt;li&gt;[x] Completed task&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Symbol Escaping&lt;/h3&gt;
+&lt;p&gt;If you need to use markdown symbols like _ # * in your description but don&apos;t want them to be escaped, you can add a backslash before these symbols, such as &lt;code&gt;\_&lt;/code&gt; &lt;code&gt;\#&lt;/code&gt; &lt;code&gt;\*&lt;/code&gt; to avoid it.&lt;/p&gt;
+&lt;pre&gt;&lt;code class=&quot;language-markdown&quot;&gt;\_Don&apos;t want the text here to be italic\_
+
+\*\*Don&apos;t want the text here to be bold\*\*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Preview:&lt;/p&gt;
+&lt;p&gt;_Don&apos;t want the text here to be italic_&lt;/p&gt;
+&lt;p&gt;**Don&apos;t want the text here to be bold**&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;Embedding Astro Components&lt;/h2&gt;
 &lt;p&gt;See &lt;a href=&quot;/docs/integrations/components&quot;&gt;User Components&lt;/a&gt; and &lt;a href=&quot;/docs/integrations/advanced&quot;&gt;Advanced Components&lt;/a&gt; for details.&lt;/p&gt;</content:encoded><h:img src="/_astro/thumbnail.HAXFr_hw.jpg"/><enclosure url="/_astro/thumbnail.HAXFr_hw.jpg"/></item></channel></rss>
